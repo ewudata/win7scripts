@@ -58,8 +58,8 @@ $features = @(
 )
 
 foreach ($feature in $features) {
-    echo "Trying to disable $service"
-    dism /online /Disable-Feature /FeatureName:$feature
+    echo "Trying to disable $feature"
+    dism /online /Disable-Feature /FeatureName:$feature /NoRestart /Quiet
 }
 
 #disable UAC
