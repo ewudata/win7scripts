@@ -1,6 +1,8 @@
 #   Description:
 # This script disables unwanted Windows services. If you do not want to disable
 # certain services comment out the corresponding lines below.
+# !!!!
+# Set-ExecutionPolicy Unrestricted
 
 $services = @(
     "BITS"                                     # Background Intelligent Transfer Service
@@ -29,3 +31,34 @@ foreach ($service in $services) {
     echo "Trying to disable $service"
     Get-Service -Name $service | Set-Service -StartupType Disabled
 }
+
+#bonus 1
+echo "stop Aero..."
+sc stop uxsms
+
+#bonus 2
+# dism /online /Get-Features /Format:Table
+
+$features = @(
+    WindowsGadgetPlatform        
+    MediaPlayback                
+    WindowsMediaPlayer                          
+    MediaCenter                                 
+    OpticalMediaDisc                            
+    NetFx3                                      
+    TabletPCOC                                  
+    Printing-Foundation-Features                
+    Printing-Foundation-InternetPrinting-Client 
+    FaxServicesClientPackage                    
+    MSRDC-Infrastructure                        
+    Printing-XPSServices-Features               
+    Xps-Foundation-Xps-Viewer                   
+    SearchEngine-Client-Package                 
+    # Internet-Explorer-Optional-x86              
+)
+
+foreach ($feature in $features) {
+    echo "Trying to disable $service"
+    dism /online /Disable-Feature /FeatureName:$feature
+}
+
