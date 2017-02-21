@@ -40,20 +40,20 @@ sc stop uxsms
 # dism /online /Get-Features /Format:Table
 
 $features = @(
-    WindowsGadgetPlatform        
-    MediaPlayback                
-    WindowsMediaPlayer                          
-    MediaCenter                                 
-    OpticalMediaDisc                            
-    NetFx3                                      
-    TabletPCOC                                  
-    Printing-Foundation-Features                
-    Printing-Foundation-InternetPrinting-Client 
-    FaxServicesClientPackage                    
-    MSRDC-Infrastructure                        
-    Printing-XPSServices-Features               
-    Xps-Foundation-Xps-Viewer                   
-    SearchEngine-Client-Package                 
+    "WindowsGadgetPlatform"        
+    "MediaPlayback"         
+    "WindowsMediaPlayer"                          
+    "MediaCenter"                                
+    "OpticalMediaDisc"                            
+    "NetFx3"                                  
+    "TabletPCOC"                                  
+    "Printing-Foundation-Features"
+    "Printing-Foundation-InternetPrinting-Client" 
+    "FaxServicesClientPackage"                 
+    "MSRDC-Infrastructure"                        
+    "Printing-XPSServices-Features"
+    "Xps-Foundation-Xps-Viewer"                   
+    "SearchEngine-Client-Package"                
     # Internet-Explorer-Optional-x86              
 )
 
@@ -61,4 +61,8 @@ foreach ($feature in $features) {
     echo "Trying to disable $service"
     dism /online /Disable-Feature /FeatureName:$feature
 }
+
+#disable UAC
+New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
+
 
