@@ -54,7 +54,7 @@ $features = @(
     "Printing-XPSServices-Features"
     "Xps-Foundation-Xps-Viewer"                   
     "SearchEngine-Client-Package"                
-    # Internet-Explorer-Optional-x86              
+    # Internet-Explorer-Optional-x86
 )
 
 foreach ($feature in $features) {
