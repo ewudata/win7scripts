@@ -16,6 +16,7 @@ $services = @(
     "NlaSvc"                                   # Network Location Awareness
     "CscService"                               # Offline Files
     "SessionEnv"                               # Remote Desktop Configuration
+    "Spooler"                                  # Print Spooler
     "TermService"                              # Remote Desktop Services
     "UmRdpService"                             # Remote Desktop Services UserMode Port Redirector	
     "wscsvc"                                   # Security Center
