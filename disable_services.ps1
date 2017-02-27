@@ -25,6 +25,8 @@ $services = @(
     "WerSvc"                                   # Windows Error Reporting Service
     "MpsSvc"                                   # Windows Firewall
     "wuauserv"                                 # Windows Update
+    "Audiosrv"                                 # Windows Audio
+    "AudioEndpointBuilder"                     # Windows Audio Endpoint Builder
     "WinHttpAutoProxySvc"                      # WinHTTP Web Proxy Auto-Discovery Service
 )
 
