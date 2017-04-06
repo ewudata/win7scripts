@@ -31,13 +31,13 @@ $services = @(
 )
 
 foreach ($service in $services) {
-    echo "Trying to disable $service"
+    Write-Output "Trying to disable $service"
     Get-Service -Name $service | Set-Service -StartupType Disabled
 }
 
 #bonus 1
-echo "stop Aero..."
-sc stop uxsms
+Write-Output "stop Aero..."
+Set-Content stop uxsms
 
 #bonus 2
 # dism /online /Get-Features /Format:Table
@@ -61,7 +61,7 @@ $features = @(
 )
 
 foreach ($feature in $features) {
-    echo "Trying to disable $feature"
+    Write-Output "Trying to disable $feature"
     dism /online /Disable-Feature /FeatureName:$feature /NoRestart /Quiet
 }
 
