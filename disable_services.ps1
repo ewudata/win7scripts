@@ -67,5 +67,7 @@ foreach ($feature in $features) {
 
 #disable UAC
 New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
+#NTFS
+Set-ItemProperty -Path HKLM:SYSTEM\CurrentControlSet\Control\FileSystem -Name NtfsDisable8dot3NameCreation -Value 1
 
 
